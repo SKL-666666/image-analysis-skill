@@ -48,6 +48,24 @@ python -m pip install pillow numpy opencv-python-headless
 
 验证：`python scripts\analyze_image.py 任意图片.png --plain`，看到八段式报告即成功。
 
+## 🤖 导入为 Agent 技能
+
+`scripts/` 目录是**自包含的技能包**（`SKILL.md` 技能定义 + 脚本），可直接导入到支持 Agent Skills 的客户端，让 agent 获得"看图"能力：
+
+```bash
+# ① 先安装依赖（二选一）
+install_deps.bat            # Windows 下双击运行
+# 或 python -m pip install pillow numpy opencv-python-headless
+
+# ② 把 scripts/ 目录复制为技能（以 ZCode / Claude Code 为例）
+cp -r scripts ~/.zcode/skills/image-analysis      # ZCode
+cp -r scripts ~/.claude/skills/image-analysis     # Claude Code
+```
+
+导入后向 agent 发送**图片或截图路径**并提问（如"分析这张图""截图里是什么"），agent 会按 `SKILL.md` 中的流程自动调用脚本，输出结构化报告。
+
+> 提示：技能目录名即技能名，可自行修改；`SKILL.md` 中的 description 决定了 agent 何时自动触发该技能。
+
 ## 📖 快速上手
 
 ```bash
@@ -101,12 +119,12 @@ image-analysis/
 ├── README.md               ← 本说明
 ├── install_deps.bat        ← 一键安装依赖（Windows）
 └── scripts/
-    ├── SKILL.md            ← 技能定义（ZCode / Claude Agent Skills 兼容，可选）
+    ├── SKILL.md            ← 技能定义（Agent Skills 入口，导入时以 scripts/ 为技能根目录）
     ├── analyze_image.py    ← 主脚本（全部逻辑，零项目依赖）
     └── ocr.ps1             ← Windows 自带 OCR 引擎调用器
 ```
 
 ## 🤝 使用建议
 
-- 作为 **ZCode / Claude Agent Skills** 使用时，将本目录放入 skills 目录即可自动生效（`SKILL.md` 包含完整使用流程）
+- 作为 **ZCode / Claude Agent Skills** 使用时，将 `scripts/` 目录导入技能目录即可生效（见上文「导入为 Agent 技能」），`SKILL.md` 包含完整使用流程
 - 与多模态视觉模型配合使用效果更佳：本工具负责结构化提取，视觉模型负责语义理解
