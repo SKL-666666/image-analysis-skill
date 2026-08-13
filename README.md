@@ -116,12 +116,13 @@ python scripts\analyze_image.py 图1.png 图2.png 某目录 --plain --out-dir �
 
 ```
 image-analysis/
-├── README.md               ← 本说明
-├── install_deps.bat        ← 一键安装依赖（Windows）
+├── README.md                  ← 本说明
+├── image-analysis-交付包.zip  ← 完整交付包（含本说明 + 技能 + 脚本 + 安装器，解压即用）
+├── install_deps.bat           ← 一键安装依赖（Windows）
 └── scripts/
-    ├── SKILL.md            ← 技能定义（Agent Skills 入口，导入时以 scripts/ 为技能根目录）
-    ├── analyze_image.py    ← 主脚本（全部逻辑，零项目依赖）
-    └── ocr.ps1             ← Windows 自带 OCR 引擎调用器
+    ├── SKILL.md               ← 技能定义（Agent Skills 入口，导入时以 scripts/ 为技能根目录）
+    ├── analyze_image.py       ← 主脚本（全部逻辑，零项目依赖）
+    └── ocr.ps1                ← Windows 自带 OCR 引擎调用器
 ```
 
 ## 🤝 使用建议
