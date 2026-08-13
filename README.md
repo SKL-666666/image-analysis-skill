@@ -124,7 +124,7 @@ image-analysis/
     └── ocr.ps1             ← Windows 自带 OCR 引擎调用器
 ```
 
-> 📦 完整交付包 zip（含本说明 + 技能 + 脚本 + 安装器，解压即用）不随源码存储，请到 **GitHub Releases** 页面下载。
+> 📦 完整交付包 zip（含本说明 + 技能 + 脚本 + 安装器，解压即用）不随源码存储，请到 **GitHub Releases** 下载：[v1.0.0 · image-analysis-skill-v1.0.0.zip](https://github.com/SKL-666666/image-analysis-skill/releases/latest)
 
 ## 🤝 使用建议
 
