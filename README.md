@@ -57,12 +57,13 @@ python -m pip install pillow numpy opencv-python-headless
 install_deps.bat            # Windows 下双击运行
 # 或 python -m pip install pillow numpy opencv-python-headless
 
-# ② 把 scripts/ 目录复制为技能（以 ZCode / Claude Code 为例）
+# ② 把 scripts/ 目录复制为技能（以 ZCode 为例）
 cp -r scripts ~/.zcode/skills/image-analysis      # ZCode
-cp -r scripts ~/.claude/skills/image-analysis     # Claude Code
 ```
 
-导入后向 agent 发送**图片或截图路径**并提问（如"分析这张图""截图里是什么"），agent 会按 `SKILL.md` 中的流程自动调用脚本，输出结构化报告。
+导入后向 agent 发送**图片或截图的本地路径**并提问（如"分析这张图""截图里是什么"），agent 会按 `SKILL.md` 中的流程自动调用脚本，输出结构化报告。
+
+> ⚠️ **兼容性声明**：部分 Agent 工具**不允许向单模态（纯文本）模型发送图片**，图片内容会被忽略或直接报错——本技能正是通过"本地脚本分析 + 文字报告"来规避该限制。**目前仅在 ZCode 上测试验证成功**，在其它客户端使用前请先自行验证其行为。
 
 > 提示：技能目录名即技能名，可自行修改；`SKILL.md` 中的 description 决定了 agent 何时自动触发该技能。
 
@@ -128,5 +129,5 @@ image-analysis/
 
 ## 🤝 使用建议
 
-- 作为 **ZCode / Claude Agent Skills** 使用时，将 `scripts/` 目录导入技能目录即可生效（见上文「导入为 Agent 技能」），`SKILL.md` 包含完整使用流程
+- 作为 **ZCode Agent Skills** 使用时，将 `scripts/` 目录导入技能目录即可生效（见上文「导入为 Agent 技能」），`SKILL.md` 包含完整使用流程
 - 与多模态视觉模型配合使用效果更佳：本工具负责结构化提取，视觉模型负责语义理解
